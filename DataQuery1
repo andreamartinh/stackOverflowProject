@@ -1,1 +1,18 @@
 
+#Features and output for project.
+
+SELECT  SuggestedEdits.Id,
+                SuggestedEdits.Title, SuggestedEdits.Text, 
+                SuggestedEdits.Comment, SuggestedEdits.Tags,          
+                Posts.PostTypeId, Posts.LastEditDate,Posts.Title,Posts.Tags,
+                Users.Reputation,Users.CreationDate, Users.Views, 
+                Users.UpVotes, Users.DownVotes, 
+                Users.WebsiteUrl, Users.Location, Users.AboutMe,
+                SuggestedEdits.ApprovalDate, SuggestedEdits.RejectionDate
+FROM SuggestedEdits
+TABLESAMPLE (0.004 PERCENT)
+JOIN Posts
+    ON SuggestedEdits.PostId = Posts.Id 
+JOIN Users
+    ON SuggestedEdits.OwnerUserId = Users.Id
+WHERE Posts.PostTypeId < 3;
