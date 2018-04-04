@@ -48,7 +48,7 @@ df['CommentProfanity'] = df['Comment'].apply(lambda x: profanity.contains_profan
 df['Text']=df['Text'].fillna('0')
 df['TextProfanity'] = df['Text'].apply(lambda x: profanity.contains_profanity(x))
 
-##User Features
+##User's Features
 
 #The user has a WebstieURL
 df['WebsiteUrl']=df['WebsiteUrl'].fillna(0)
